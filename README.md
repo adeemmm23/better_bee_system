@@ -14,12 +14,6 @@ Better Bee is a monitoring system for beehives that tracks location, noise level
 - Python 3.x
 - Various Python packages (specified in each individual script)
 
-## Usage
-
-1. Clone this repository.
-2. Install the required dependencies using `pip install -r requirements.txt`.
-3. Run the monitoring system by executing `python start_monitoring.py`.
-
 The monitoring system will start threads for location detection, noise monitoring, temperature/humidity monitoring, and hive activity monitoring.
 
 ## Scripts
