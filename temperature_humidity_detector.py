@@ -1,8 +1,9 @@
 from datetime import date, datetime
 import json
+import random
 import requests
-import Adafruit_DHT
-import time
+# import Adafruit_DHT
+from time import sleep
 
 high_temperature_alert = {
     "name": "High Temperature",
@@ -79,9 +80,10 @@ def post_alert(data, value):
         print("Failed to send Temperature or Humidity alert")
 
 
-pin = 23
-sensor = Adafruit_DHT.DHT11
-humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+# pin = 23
+# sensor = Adafruit_DHT.DHT11
+# humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+        
 
 
 def main():
@@ -92,9 +94,11 @@ def main():
     alerted_humidity = False
 
     while True:
+        temperature = random.randint(14, 16)
+        humidity = random.randint(60, 65) * 1.0
         print(f"Temperature: {temperature} °C")
         print(f"Humidity: {humidity} %")
-        time.sleep(1)
+        sleep(1)
 
         put_firebase_temperature(temperature)
         put_firebase_humidity(humidity)

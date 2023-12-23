@@ -1,7 +1,9 @@
 import json
+import random
+from time import sleep
 import requests
 from datetime import datetime, date
-import sounddevice as sd
+# import sounddevice as sd
 import numpy as np
 
 high_noise_alert = {
@@ -64,12 +66,15 @@ def main():
     sample_rate = 44100
 
     while True:
-        audio_data = sd.rec(int(duration * sample_rate),
-                            samplerate=sample_rate, channels=1)
-        sd.wait()
+        # audio_data = sd.rec(int(duration * sample_rate),
+        #                     samplerate=sample_rate, channels=1)
+        # sd.wait()
 
-        dominant_frequency_hz = abs(calculate_dominant_frequency(
-            audio_data[:, 0], sample_rate))
+        # dominant_frequency_hz = abs(calculate_dominant_frequency(
+        #     audio_data[:, 0], sample_rate))
+
+        dominant_frequency_hz = random.randint(10, 70)
+        sleep(1)
 
         print(f"Noise: {dominant_frequency_hz:.2f} Hz")
         put_firebase(dominant_frequency_hz)
